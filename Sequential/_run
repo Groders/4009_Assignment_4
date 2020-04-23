@@ -1,0 +1,4 @@
+#!/bin/sh
+
+mpiexec -np 1 --hostfile _hostfile main
+

@@ -1,0 +1,41 @@
+How to:
+
+compile: ./_compile
+
+run: 	sequential: ./_run 
+	parallel: mpiexec -np 10 --hostfile _hostfile main
+
+
+Both sequential and parallel read in a 100x100 matrix called 
+"distance_matrix.txt". There is a python program call genM.py 
+which can be used to generate random matrics by calling
+
+python3 genM.py 100
+
+
+Sequental Results:
+Using the sample matrix provided in the Sequential directory I achived the below results
+
+Path:
+5 27 98 23 50 54 15 30 62 13 92 11 70 20 44 28 33 69 38 22 7 79 42 94 84 56 47 86 90 91 34 8 40 4 9 64 53 74 93 58 73 88 16 72 63 77 46 49 17 81 18 52 29 35 2 45 89 82 57 80 60 10 26 0 25 37 59 3 55 75 68 1 78 61 36 87 76 6 66 71 85 41 65 19 21 31 96 32 14 97 99 48 83 51 67 95 12 24 43 39 
+fitness: 2.81239e-05
+Sum of costs: 35557
+Elapsed wall clock time = 5.12616 seconds.
+
+
+Parallel Results:
+61 17 90 33 71 82 81 10 19 54 41 78 77 64 67 4 60 18 86 94 32 0 29 75 11 84 14 26 31 52 63 50 28 66 27 76 98 65 6 47 93 13 72 15 49 30 57 48 3 37 7 91 24 96 16 38 51 80 53 55 23 25 35 45 74 12 46 20 1 21 92 89 36 88 95 58 79 9 73 56 8 42 69 40 70 59 34 43 39 85 83 99 44 87 97 5 22 62 68 2 
+fitness: 2.8962e-05 
+Sum of costs: 34528
+ 
+Elapsed wall clock time = 43.4919 seconds.
+
+
+Comments:
+I used the default parameters as defined in his slides for these
+results. When I was exploring other configurations I found that a 
+high R, around 50, and a higher U (around 30000) resulted in shorter
+paths found, but at a cost of more time spent searching. It might also 
+be interesting to look at different crossover functions that attempt to
+do something smarter than what is done in the current algorithm.
+
